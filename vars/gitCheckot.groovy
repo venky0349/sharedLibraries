@@ -1,3 +1,8 @@
-def call () {
-    git 'https://github.com/venky0349/java-project.git'
-}
+def call(Map stageParams) {
+ 
+    checkout([
+        $class: 'GitSCM',
+        branches: [[name:  stageParams.branch ]],
+        userRemoteConfigs: [[ url: stageParams.url ]]
+    ])
+  }
